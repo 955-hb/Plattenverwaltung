@@ -1,0 +1,111 @@
+/* kommt wieder weg! */
+/*
+#heading {
+  border: 2px solid red;
+}
+
+#main-left {
+  border: 2px solid red;
+}
+*/
+/* - bis hier! */
+
+html {
+  border: solid red 2px;
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.heading .heading-h1 {
+  margin-left: 5px;
+}
+
+.heading h3 {
+  margin: 10px;
+  padding-top: 0px;
+}
+
+body {
+  background-color: lightgray;
+  height: 800px;
+  width: 600px;
+  margin: 30px;
+  border-color: black;
+  border-radius: 5px;
+}
+
+.heading-h3 {
+  margin-left: 10px;
+}
+
+.main-container {
+  display: flex;
+  justify-content: space-around; /* Gleicher Abstand auf beiden Seiten */
+  align-items: flex-start; /* Richtet die beiden Spalten oben aus */
+  padding: 20px;
+  gap: 20px; /* Abstand zwischen den Spalten */
+}
+
+/* Main-Left */
+.main-left {
+  flex: 1; /* Beide Spalten haben gleiche Breite */
+  padding: 20px;
+  border: 1px solid #ddd;
+  min-width: 200px; /* Mindestbreite, um das Layout stabil zu halten */
+}
+
+.main-h4 {
+  margin: 0px;
+  margin-top: 20px;
+  margin-left: 15px;
+  margin-bottom: 10px;
+  padding: 0px;
+  text-decoration: underline;
+}
+
+.main-left input {
+  margin-top: 15px;
+  margin-left: 20px;
+  width: 150px;
+  border-color: black;
+  border-radius: 5px;
+}
+
+.main-left .inputJahr {
+  margin-bottom: 20px;
+}
+
+.btn-übernehmen {
+  border-radius: 5px;
+  margin-left: 20px;
+  width: 130px;
+}
+
+/* Main-Right */
+.main-right {
+  flex: 1; /* Gleiche Breite wie die linke Spalte */
+  padding: 20px;
+  border: 1px solid #ddd;
+  min-width: 200px; /* Mindestbreite wie in main-left */
+}
+
+.main-right .h4 {
+  flex: 1; /* Rechte Spalte nimmt weniger Platz ein */
+  padding: 20px;
+  border: 1px solid #ddd; /* Beispielrahmen */
+  margin-left: -10px;
+}
+
+.main-right #second {
+  margin-top: 40px;
+}
+
+/* Footer */
+#footer p {
+  margin-left: 10px;
+  font-size: 8px;
+}
