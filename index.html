@@ -7,6 +7,40 @@
     <link rel="stylesheet" href="./style/style.css" />
   </head>
   <body>
+    <!-- Heading -->
+    <div id="heading" class="heading">
+      <h1 class="heading-h1">Verwalte deine Plattensammlung</h1>
+      <h3 class="heading-h3">Gebe hier die Daten zu deiner neuen Platte an.</h3>
+    </div>
+
+    <!-- Main-Container -->
+    <div class="main-container" id="main-container">
+      <!-- Haupteingabefelder - LINKS -->
+      <div id="main-left" class="main-left">
+        <h4 class="main-h4">Gebe hier folgende Infos ein:</h4>
+        <input class="inputInterpret" type="text" placeholder="Interpret" />
+        <input class="inputAlbum" type="text" placeholder="Albumtitel" />
+        <input class="inputJahr" type="text" placeholder="Erscheinungsjahr" />
+
+        <button id="btn-übernehmen" class="btn-übernehmen">Übernehmen</button>
+      </div>
+
+      <!-- Informationsausgabe - RECHTS-->
+      <div class="main-right" id="main-right">
+        <h4 id="first">Inventar</h4>
+        <button class="btn-anzeigen" id="btn-anzeigen">Anzeigen</button>
+        <h4 id="second">Doppelt?</h4>
+        <button class="btn-prüfen" id="btn-prüfen">Prüfen</button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer" class="footer">
+      <br />
+      <br />
+      <p>© Hannes Bröhl</p>
+    </div>
+
     <script src="./script.js"></script>
   </body>
 </html>
