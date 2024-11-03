@@ -11,7 +11,7 @@
 /* - bis hier! */
 
 html {
-  border: solid red 2px;
+  border: 1px solid #ddd;
 }
 
 .heading {
@@ -79,7 +79,7 @@ body {
   margin-bottom: 20px;
 }
 
-.btn-übernehmen {
+#btn {
   border-radius: 5px;
   margin-left: 20px;
   width: 130px;
