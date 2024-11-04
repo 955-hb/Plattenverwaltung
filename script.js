@@ -1,3 +1,6 @@
+// leeres Array --> Plattensammlung
+const plattenSammlung = [];
+
 document.addEventListener("DOMContentLoaded", function () {
   // Hole den Übernehmen-Button und füge ihm einen Klick-Event-Listener hinzu
   const btnÜbernehmen = document.getElementById("btn-übernehmen");
@@ -16,14 +19,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Überprüfe die Eingaben (optional)
     if (interpret && albumtitel && erscheinungsjahr) {
-      console.log("Interpret:", interpret);
-      console.log("Albumtitel:", albumtitel);
-      console.log("Erscheinungsjahr:", erscheinungsjahr);
+      //console.log("Interpret:", interpret);
+      //console.log("Albumtitel:", albumtitel);
+      //console.log("Erscheinungsjahr:", erscheinungsjahr);
 
-      // Zeige eine Meldung mit den Daten an
-      //alert(
-      //  `Neue Platte hinzugefügt:\nInterpret: ${interpret}\nAlbum: ${albumtitel}\nErscheinungsjahr: ${erscheinungsjahr}`
-      //);
+      const newAlbum = {
+        interpret: interpret,
+        albumtitel: albumtitel,
+        erscheinungsjahr: erscheinungsjahr,
+      };
+
+      // Objekt dem Sammlungs-Array hinzufügen
+      plattenSammlung.push(newAlbum);
+      console.log(plattenSammlung);
+      console.log(plattenSammlung.length);
 
       // Leere die Input-Felder
       interpretInput.value = "";
