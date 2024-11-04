@@ -4,6 +4,7 @@ const plattenSammlung = [];
 document.addEventListener("DOMContentLoaded", function () {
   // Hole den Übernehmen-Button und füge ihm einen Klick-Event-Listener hinzu
   const btnÜbernehmen = document.getElementById("btn-übernehmen");
+  const btnExport = document.getElementById("btn-anzeigen");
 
   // Klick-Event-Handler für den Übernehmen-Button
   btnÜbernehmen.addEventListener("click", function () {
@@ -41,5 +42,47 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       alert("Bitte alle Felder ausfüllen.");
     }
+  });
+
+  btnExport.addEventListener("click", function exportExcel() {
+    console.log("Plattensammlung vor Export:", plattenSammlung);
+
+    // wenn das Array leer ist eine Warnung ausgeben!
+    if (plattenSammlung.length === 0) {
+      alert("Deine Plattensammlung ist noch leer.");
+      return;
+    }
+
+    // Zeitstempel
+    const formatDate = (date) => {
+      const options = {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false,
+      };
+      return new Intl.DateTimeFormat("de-DE", options)
+        .format(date)
+        .replace(/\./g, "-")
+        .replace(",", "");
+    };
+
+    // generiere aktuellen Zeitstempel +1Hour
+    const currentDate = new Date();
+    currentDate.setHours(currentDate.getHours() + 1);
+    const timeStamp = formatDate(currentDate);
+
+    // #1 Arbeitsblatt aus Array erstellen
+    const ws = XLSX.utils.json_to_sheet(plattenSammlung);
+
+    // #2 neue Arbeitsmappe erstellen --> Arbeitsblatt hinzufügen
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Plattensammlung");
+
+    // #3 xls.file erstellen + bereitstellen
+    XLSX.writeFile(wb, `Plattensammlung_${timeStamp}.xlsx`);
   });
 });
