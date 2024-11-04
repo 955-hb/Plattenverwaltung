@@ -1,19 +1,15 @@
-/* kommt wieder weg! */
-/*
-#heading {
-  border: 2px solid red;
+/* Farben */
+:root {
+  --main-backgroundcolor: #c66b3d;
+  --main-fontcolor: #26495c;
+  --main-btnColor: #e5e5dc;
 }
-
-#main-left {
-  border: 2px solid red;
-}
-*/
-/* - bis hier! */
 
 html {
   border: solid red 2px;
 }
 
+/* ----- Heading -----*/
 .heading {
   display: flex;
   flex-direction: column;
@@ -27,19 +23,18 @@ html {
 .heading h3 {
   margin: 10px;
   padding-top: 0px;
+  margin-left: 10px;
 }
 
+/* ----- Main ----- */
 body {
-  background-color: lightgray;
+  background-color: var(--main-backgroundcolor);
+  color: var(--main-fontcolor);
   height: 800px;
   width: 600px;
   margin: 30px;
   border-color: black;
   border-radius: 5px;
-}
-
-.heading-h3 {
-  margin-left: 10px;
 }
 
 .main-container {
@@ -50,11 +45,22 @@ body {
   gap: 20px; /* Abstand zwischen den Spalten */
 }
 
-/* Main-Left */
+.btn {
+  border: 2px solid black;
+  color: black;
+  background-color: var(--main-btnColor);
+  border-radius: 5px;
+}
+
+.input {
+  padding-right: 10px;
+}
+
+/* ----- Main-Left ----- */
 .main-left {
   flex: 1; /* Beide Spalten haben gleiche Breite */
   padding: 20px;
-  border: 1px solid #ddd;
+
   min-width: 200px; /* Mindestbreite, um das Layout stabil zu halten */
 }
 
@@ -80,31 +86,27 @@ body {
 }
 
 .btn-übernehmen {
-  border-radius: 5px;
   margin-left: 20px;
   width: 130px;
 }
 
-/* Main-Right */
+/* ----- Main-Right ----- */
 .main-right {
   flex: 1; /* Gleiche Breite wie die linke Spalte */
   padding: 20px;
-  border: 1px solid #ddd;
   min-width: 200px; /* Mindestbreite wie in main-left */
 }
 
-.main-right .h4 {
-  flex: 1; /* Rechte Spalte nimmt weniger Platz ein */
-  padding: 20px;
-  border: 1px solid #ddd; /* Beispielrahmen */
+.main-right h4 {
+  margin-left: -10px;
+  text-decoration: underline;
+}
+
+.main-right button {
   margin-left: -10px;
 }
 
-.main-right #second {
-  margin-top: 40px;
-}
-
-/* Footer */
+/* ----- Footer ----- */
 #footer p {
   margin-left: 10px;
   font-size: 8px;
