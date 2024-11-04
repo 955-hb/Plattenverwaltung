@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Plattenverwaltung</title>
     <link rel="stylesheet" href="./style/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
   </head>
   <body>
     <!-- Heading -->
@@ -38,7 +39,9 @@
       <!-- Informationsausgabe - RECHTS-->
       <div class="main-right" id="main-right">
         <h4 id="first">Inventar</h4>
-        <button class="btn-anzeigen btn" id="btn-anzeigen">Anzeigen</button>
+        <button class="btn-anzeigen btn" id="btn-anzeigen">
+          Export in Excel
+        </button>
         <h4 id="second">Doppelt?</h4>
         <button class="btn-prüfen btn" id="btn-prüfen">Prüfen</button>
       </div>
