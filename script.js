@@ -66,13 +66,13 @@ document.addEventListener("DOMContentLoaded", function () {
       };
       return new Intl.DateTimeFormat("de-DE", options)
         .format(date)
-        .replace(/\./g, "-")
+        .replace(/\./g, "/")
         .replace(",", "");
     };
 
     // generiere aktuellen Zeitstempel +1Hour
     const currentDate = new Date();
-    currentDate.setHours(currentDate.getHours() + 1);
+    currentDate.setHours(currentDate.getHours());
     const timeStamp = formatDate(currentDate);
 
     // #1 Arbeitsblatt aus Array erstellen
@@ -83,6 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
     XLSX.utils.book_append_sheet(wb, ws, "Plattensammlung");
 
     // #3 xls.file erstellen + bereitstellen
+    // Excel-Export wird in downloads-Ordner bereitgestellt.
     XLSX.writeFile(wb, `Plattensammlung_${timeStamp}.xlsx`);
   });
 });
