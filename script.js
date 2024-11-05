@@ -1,10 +1,15 @@
-// leeres Array --> Plattensammlung
-const plattenSammlung = [];
+// leeres Array --> Plattensammlung LocalStorage
+let plattenSammlung = JSON.parse(localStorage.getItem("plattenSammlung")) || [];
 
 document.addEventListener("DOMContentLoaded", function () {
   // Hole den Übernehmen-Button und füge ihm einen Klick-Event-Listener hinzu
   const btnÜbernehmen = document.getElementById("btn-übernehmen");
   const btnExport = document.getElementById("btn-anzeigen");
+
+  // LocalStorage
+  function localStoragePlattensammlung() {
+    localStorage.setItem("plattenSammlung", JSON.stringify(plattenSammlung));
+  }
 
   // Klick-Event-Handler für den Übernehmen-Button
   btnÜbernehmen.addEventListener("click", function () {
@@ -34,6 +39,9 @@ document.addEventListener("DOMContentLoaded", function () {
       plattenSammlung.push(newAlbum);
       console.log(plattenSammlung);
       console.log(plattenSammlung.length);
+
+      // neue Inputs LocalStorage den hinzufügen
+      localStoragePlattensammlung();
 
       // Leere die Input-Felder
       interpretInput.value = "";
