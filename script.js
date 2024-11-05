@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // generiere aktuellen Zeitstempel +1Hour
     const currentDate = new Date();
-    currentDate.setHours(currentDate.getHours());
+    currentDate.setHours(currentDate.getHours()); // .getHours()+1 für eine Stunde mehr
     const timeStamp = formatDate(currentDate);
 
     // #1 Arbeitsblatt aus Array erstellen
