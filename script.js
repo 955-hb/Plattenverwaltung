@@ -83,6 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
     XLSX.utils.book_append_sheet(wb, ws, "Plattensammlung");
 
     // #3 xls.file erstellen + bereitstellen
+    // Excel-Export wird in downloads-Ordner bereitgestellt.
     XLSX.writeFile(wb, `Plattensammlung_${timeStamp}.xlsx`);
   });
 });
