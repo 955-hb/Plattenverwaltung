@@ -11,6 +11,16 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem("plattenSammlung", JSON.stringify(plattenSammlung));
   }
 
+  // Funktion zur Prüfung ob ein Eintrag schon vorhanden ist
+  function checkIfAlbumExists(interpret, albumtitel, erscheinungsjahr) {
+    return plattenSammlung.some(
+      (album) =>
+        album.interpret === interpret &&
+        album.albumtitel === albumtitel &&
+        album.erscheinungsjahr === erscheinungsjahr
+    );
+  }
+
   // Klick-Event-Handler für den Übernehmen-Button
   btnÜbernehmen.addEventListener("click", function () {
     // Greife auf die Input-Felder selbst zu
@@ -23,39 +33,43 @@ document.addEventListener("DOMContentLoaded", function () {
     const albumtitel = albumtitelInput.value;
     const erscheinungsjahr = erscheinungsjahrInput.value;
 
-    // Überprüfe die Eingaben (optional)
-    if (interpret && albumtitel && erscheinungsjahr) {
-      //console.log("Interpret:", interpret);
-      //console.log("Albumtitel:", albumtitel);
-      //console.log("Erscheinungsjahr:", erscheinungsjahr);
-
-      const newAlbum = {
-        interpret: interpret,
-        albumtitel: albumtitel,
-        erscheinungsjahr: erscheinungsjahr,
-      };
-
-      // Objekt dem Sammlungs-Array hinzufügen
-      plattenSammlung.push(newAlbum);
-      console.log(plattenSammlung);
-      console.log(plattenSammlung.length);
-
-      // neue Inputs LocalStorage den hinzufügen
-      localStoragePlattensammlung();
-
-      // Leere die Input-Felder
-      interpretInput.value = "";
-      albumtitelInput.value = "";
-      erscheinungsjahrInput.value = "";
-    } else {
+    // Überprüfe die Eingaben
+    if (!interpret || !albumtitel || !erscheinungsjahr) {
       alert("Bitte alle Felder ausfüllen.");
+      return;
     }
+
+    // Prüfen, ob das Album bereits existiert
+    if (checkIfAlbumExists(interpret, albumtitel, erscheinungsjahr)) {
+      alert("Diese Platte hast du bereits.");
+      return;
+    }
+
+    // Neues Album-Objekt erstellen und zur Sammlung hinzufügen
+    const newAlbum = {
+      interpret: interpret,
+      albumtitel: albumtitel,
+      erscheinungsjahr: erscheinungsjahr,
+    };
+
+    // Objekt dem Sammlungs-Array hinzufügen
+    plattenSammlung.push(newAlbum);
+
+    // neue Inputs LocalStorage hinzufügen
+    localStoragePlattensammlung();
+
+    // Bestätigung und Leeren der Input-Felder
+    alert("Die neue Platte wurde erfolgreich hinzugefügt.");
+    interpretInput.value = "";
+    albumtitelInput.value = "";
+    erscheinungsjahrInput.value = "";
   });
 
+  // Klick-Event-Handler für den Export-Button
   btnExport.addEventListener("click", function exportExcel() {
     console.log("Plattensammlung vor Export:", plattenSammlung);
 
-    // wenn das Array leer ist eine Warnung ausgeben!
+    // Warnung, wenn das Array leer ist
     if (plattenSammlung.length === 0) {
       alert("Deine Plattensammlung ist noch leer.");
       return;
@@ -78,9 +92,8 @@ document.addEventListener("DOMContentLoaded", function () {
         .replace(",", "");
     };
 
-    // generiere aktuellen Zeitstempel +1Hour
+    // generiere aktuellen Zeitstempel
     const currentDate = new Date();
-    currentDate.setHours(currentDate.getHours()); // .getHours()+1 für eine Stunde mehr
     const timeStamp = formatDate(currentDate);
 
     // #1 Arbeitsblatt aus Array erstellen
@@ -91,7 +104,6 @@ document.addEventListener("DOMContentLoaded", function () {
     XLSX.utils.book_append_sheet(wb, ws, "Plattensammlung");
 
     // #3 xls.file erstellen + bereitstellen
-    // Excel-Export wird in downloads-Ordner bereitgestellt.
     XLSX.writeFile(wb, `Plattensammlung_${timeStamp}.xlsx`);
   });
 });

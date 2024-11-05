@@ -106,8 +106,13 @@ body {
   margin-left: -10px;
 }
 
+.main-right p {
+  font-size: 14px;
+}
+
 /* ----- Footer ----- */
 #footer p {
+  text-decoration: overline;
   margin-left: 10px;
-  font-size: 8px;
+  font-size: 10px;
 }
